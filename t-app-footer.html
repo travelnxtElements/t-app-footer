@@ -59,7 +59,7 @@ Custom property | Description | Default
                 <a href="{{logoUrl}}">
                     <img alt="Travlnxt" src="{{src}}">
                 </a>
-                <div>&copy; 2015 | All Rights Reserved. </div>
+                <div>&copy; [[copyRightYear]] | [[copyRightText]] </div>
             </div>
             <div class="layout around-justified vertical">
                 <div>
@@ -140,6 +140,22 @@ Polymer({
             type: String,
             reflectToAttribute: true,
             computed: 'getEmail(email)'
+        },
+
+        /**
+         * copy right year
+         */
+        copyRightYear: {
+            type: String,
+            value: "2016",
+        },
+
+        /**
+         * copy right Text
+         */
+        copyRightText: {
+            type: String,
+            value: "All Rights Reserved."
         }
     },
 
