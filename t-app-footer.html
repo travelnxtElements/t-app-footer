@@ -16,8 +16,8 @@ Example:
 Custom property | Description | Default
 ----------------|-------------|----------
 --footer-text-size | The font size to use in footer | 10px
---grey-four | The color of the footer text | #777777
---grey-two | The background color of the footer | #eeeeee
+--t-footer-text-color | The color of the footer text | #777777
+--t-footer-bg-color | The background color of the footer | #eeeeee
 --primary-font-family | The font of the text in footer |
 -->
 
@@ -56,19 +56,19 @@ Custom property | Description | Default
         </style>
         <div class="layout horizontal">
             <div class="flex layout vertical">
-                <a href="{{logoUrl}}">
-                    <img alt="Travlnxt" src="{{src}}">
+                <a href$="[[logoUrl]]">
+                    <img alt="Travlnxt" src$="[[src]]">
                 </a>
                 <div>&copy; [[copyRightYear]] | [[copyRightText]] </div>
             </div>
             <div class="layout around-justified vertical">
                 <div>
                     <iron-icon icon="icons:mail"></iron-icon>
-                    <a href="{{emailHref}}">{{email}}</a>
+                    <a href$="mailto:[[email]]">{{email}}</a>
                 </div>
                 <div>
                     <iron-icon icon="settings-phone"></iron-icon>
-                    <a href="{{phoneHref}}">{{phone}}</a>
+                    <a href$="tel:[[phone]]">{{phone}}</a>
                 </div>
             </div>
         </div>
@@ -82,7 +82,6 @@ Polymer({
     properties: {
 
         /**
-         * TODO: shouldn't this be named something like `logoSrc`?
          * The url of the image to be displayed in the footer
          * @type {String}
          */
@@ -123,27 +122,8 @@ Polymer({
         },
 
         /**
-         * The link to phone number (has protocol)
+         * Pass the copyright year
          * @type {String}
-         */
-        phoneHref: {
-            type: String,
-            reflectToAttribute: true,
-            computed: 'getPhone(phone)'
-        },
-
-        /**
-         * The link to email (has protocol)
-         * @type {String}
-         */
-        emailHref: {
-            type: String,
-            reflectToAttribute: true,
-            computed: 'getEmail(email)'
-        },
-
-        /**
-         * copy right year
          */
         copyRightYear: {
             type: String,
@@ -151,22 +131,13 @@ Polymer({
         },
 
         /**
-         * copy right Text
+         * Pass the copyright Text
+         * @type {String}
          */
         copyRightText: {
             type: String,
             value: "All Rights Reserved."
         }
-    },
-
-    //TODO: this should be private
-    getPhone: function(a) {
-        return "tel:" + a;
-    },
-
-    //TODO: this should be private
-    getEmail: function(a) {
-        return "mailto:" + a;
     }
 });
 </script>
